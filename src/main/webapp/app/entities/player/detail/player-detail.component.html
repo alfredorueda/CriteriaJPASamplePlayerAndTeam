@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="player">
+      <h2 data-cy="playerDetailsHeading"><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.detail.title">Player</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ player.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.name">Name</span></dt>
+        <dd>
+          <span>{{ player.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.birthDate">Birth Date</span></dt>
+        <dd>
+          <span>{{ player.birthDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.height">Height</span></dt>
+        <dd>
+          <span>{{ player.height }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.weight">Weight</span></dt>
+        <dd>
+          <span>{{ player.weight }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.baskets">Baskets</span></dt>
+        <dd>
+          <span>{{ player.baskets }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.assists">Assists</span></dt>
+        <dd>
+          <span>{{ player.assists }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterCriteriaJpaSampleApp.player.team">Team</span></dt>
+        <dd>
+          <div *ngIf="player.team">
+            <a [routerLink]="['/team', player.team.id, 'view']">{{ player.team.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/player', player.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
